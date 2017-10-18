@@ -3539,9 +3539,11 @@ static int hostapd_config_fill(struct hostapd_config *conf,
 		conf->local_pwr_constraint = val;
 	} else if (os_strcmp(buf, "spectrum_mgmt_required") == 0) {
 		conf->spectrum_mgmt_required = atoi(pos);
+#ifdef CONFIG_WOWLAN
 	} else if (os_strcmp(buf, "wowlan_triggers") == 0) {
 		os_free(bss->wowlan_triggers);
 		bss->wowlan_triggers = os_strdup(pos);
+#endif
 #ifdef CONFIG_FST
 	} else if (os_strcmp(buf, "fst_group_id") == 0) {
 		size_t len = os_strlen(pos);

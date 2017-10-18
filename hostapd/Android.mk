@@ -79,6 +79,10 @@ L_CFLAGS += -DCONFIG_NATIVE_WINDOWS
 LIBS += -lws2_32
 endif
 
+ifneq ($(BOARD_HOSTAPD_USES_WOWLAN),false)
+L_CFLAGS += -DCONFIG_WOWLAN
+endif
+
 OBJS = main.c
 OBJS += config_file.c
 

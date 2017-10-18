@@ -214,6 +214,7 @@ static int hostapd_driver_init(struct hostapd_iface *iface)
 		return -1;
 	}
 
+#ifdef CONFIG_WOWLAN
 	if (hapd->driver->get_capa &&
 	    hapd->driver->get_capa(hapd->drv_priv, &capa) == 0) {
 		struct wowlan_triggers *triggs;
@@ -242,6 +243,7 @@ static int hostapd_driver_init(struct hostapd_iface *iface)
 		}
 		os_free(triggs);
 	}
+#endif
 
 	return 0;
 }
